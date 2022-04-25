@@ -9,11 +9,14 @@ class SurveyController extends Controller
 {
     public function displaySurveys(){
 
-        $surveys = json_decode(file_get_contents(storage_path() . "/data/1.json"), true);
-
-        return response()->json([
-            $surveys['survey']
-        ]);
+        $surveys = [];
+        for ($i = 1; $i<16; $i++){
+            $survey = json_decode(file_get_contents(storage_path() . "/data/".$i.".json"), true);
+            if(!in_array($survey['survey'], $surveys)){
+                array_push($surveys, $survey['survey']);
+            }
+        }
+        return response()->json($surveys);
     }
 }
 
