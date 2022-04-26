@@ -16,7 +16,7 @@ class SurveyController extends Controller
                 array_push($surveys, $survey['survey']);
             }
         }
-        return response()->json($surveys);
+        return json_encode($surveys);
     }
 }
 
