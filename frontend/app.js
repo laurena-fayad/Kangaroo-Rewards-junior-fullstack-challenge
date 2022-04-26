@@ -1,11 +1,8 @@
 let rows = document.getElementById('rows');
-let flag = false;
-let button = document.getElementById('view');
 
 const getSurveys = async () => {    
     await axios.get('http://localhost:8000/api/surveys')
     .then((response) => {
-        flag = true
         let survey_data = response.data
         console.log(survey_data)
         for (let i = 0; i<survey_data.length; i++){
@@ -17,8 +14,6 @@ const getSurveys = async () => {
     })
 }
 
-if(flag==false){
-    getSurveys();
-}
+getSurveys();
 
 // button.addEventListener('click', getSurveys);
